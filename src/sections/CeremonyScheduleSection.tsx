@@ -16,11 +16,13 @@ export const CeremonyScheduleSection: React.FC<CeremonyScheduleSectionProps> = (
   return (
     <section id="schedule" className="section section-warm">
       <div className="container-narrow">
-        <SectionHeader
-          title="Celebration Schedule"
-          subtitleTelugu="కార్యక్రమ వివరాలు"
-          description="Sequence of ceremonies and gatherings celebrating our union"
-        />
+        <div className="reveal">
+          <SectionHeader
+            title="Celebration Schedule"
+            subtitleTelugu="కార్యక్రమ వివరాలు"
+            description="Sequence of ceremonies and gatherings celebrating our union"
+          />
+        </div>
 
         <div
           style={{
@@ -46,6 +48,7 @@ export const CeremonyScheduleSection: React.FC<CeremonyScheduleSectionProps> = (
             {schedule.map((event, index) => (
               <li
                 key={event.id || index}
+                className={`reveal stagger-${(index % 4) + 1}`}
                 style={{
                   position: "relative",
                   paddingLeft: "52px",
@@ -81,6 +84,7 @@ export const CeremonyScheduleSection: React.FC<CeremonyScheduleSectionProps> = (
 
                 {/* Event Card */}
                 <div
+                  className="card-interactive"
                   style={{
                     backgroundColor: "var(--color-white)",
                     borderRadius: "var(--radius-md)",

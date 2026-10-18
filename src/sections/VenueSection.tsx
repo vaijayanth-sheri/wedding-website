@@ -15,13 +15,16 @@ export const VenueSection: React.FC<VenueSectionProps> = ({ ceremony }) => {
   return (
     <section id="venue" className="section section-paper">
       <div className="container-narrow">
-        <SectionHeader
-          title="Venue & Directions"
-          subtitleTelugu="వేదిక వివరాలు &amp; మార్గము"
-          description="How to reach the wedding venue comfortably"
-        />
+        <div className="reveal">
+          <SectionHeader
+            title="Venue & Directions"
+            subtitleTelugu="వేదిక వివరాలు &amp; మార్గము"
+            description="How to reach the wedding venue comfortably"
+          />
+        </div>
 
         <div
+          className="reveal stagger-1 card-interactive"
           style={{
             backgroundColor: "var(--color-white)",
             borderRadius: "var(--radius-lg)",

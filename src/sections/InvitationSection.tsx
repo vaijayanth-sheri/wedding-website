@@ -15,41 +15,44 @@ export const InvitationSection: React.FC<InvitationSectionProps> = ({
   return (
     <section id="invitation" className="section section-warm">
       <div className="container-narrow" style={{ textAlign: "center" }}>
-        <SectionHeader
-          title="With Joyful Hearts"
-          subtitleTelugu="సాదర ఆహ్వానం"
-          description="In the presence of elders, family, and cherished friends"
-        />
+        <div className="reveal">
+          <SectionHeader
+            title="With Joyful Hearts"
+            subtitleTelugu="సాదర ఆహ్వానం"
+            description="In the presence of elders, family, and cherished friends"
+          />
 
-        {/* Telugu traditional invitation lines */}
-        <div
-          className="font-telugu"
-          style={{
-            fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
-            lineHeight: 1.8,
-            color: "var(--color-vermilion)",
-            marginBottom: "var(--space-6)",
-          }}
-        >
-          <p>{hosts.invitationTextTelugu}</p>
+          {/* Telugu traditional invitation lines */}
+          <div
+            className="font-telugu"
+            style={{
+              fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
+              lineHeight: 1.8,
+              color: "var(--color-vermilion)",
+              marginBottom: "var(--space-6)",
+            }}
+          >
+            <p>{hosts.invitationTextTelugu}</p>
+          </div>
+
+          {/* English invitation text */}
+          <p
+            style={{
+              fontSize: "var(--text-lg)",
+              lineHeight: 1.8,
+              color: "var(--color-ink)",
+              marginBottom: "var(--space-8)",
+            }}
+          >
+            {hosts.invitationText}
+          </p>
+
+          <MugguKnot />
         </div>
-
-        {/* English invitation text */}
-        <p
-          style={{
-            fontSize: "var(--text-lg)",
-            lineHeight: 1.8,
-            color: "var(--color-ink)",
-            marginBottom: "var(--space-8)",
-          }}
-        >
-          {hosts.invitationText}
-        </p>
-
-        <MugguKnot />
 
         {/* Family Hosts Card / Framing */}
         <div
+          className="reveal stagger-2 card-interactive"
           style={{
             backgroundColor: "var(--color-white)",
             borderRadius: "var(--radius-lg)",

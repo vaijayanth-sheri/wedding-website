@@ -16,11 +16,13 @@ export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
   return (
     <section id="details" className="section section-paper">
       <div className="container">
-        <SectionHeader
-          title="Ceremony & Muhurtham"
-          subtitleTelugu={ceremony.eventTitleTelugu}
-          description="Essential date, time, and location information for the auspicious occasion"
-        />
+        <div className="reveal">
+          <SectionHeader
+            title="Ceremony & Muhurtham"
+            subtitleTelugu={ceremony.eventTitleTelugu}
+            description="Essential date, time, and location information for the auspicious occasion"
+          />
+        </div>
 
         <div
           style={{
@@ -33,6 +35,7 @@ export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
         >
           {/* 1. Date & Day Card */}
           <div
+            className="reveal stagger-1 card-interactive"
             style={{
               backgroundColor: "var(--color-white)",
               borderRadius: "var(--radius-lg)",
@@ -101,6 +104,7 @@ export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
 
           {/* 2. Muhurtham Card */}
           <div
+            className="reveal stagger-2 card-interactive"
             style={{
               backgroundColor: "var(--color-white)",
               borderRadius: "var(--radius-lg)",
@@ -187,6 +191,7 @@ export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
 
           {/* 3. Venue & City Card */}
           <div
+            className="reveal stagger-3 card-interactive"
             style={{
               backgroundColor: "var(--color-white)",
               borderRadius: "var(--radius-lg)",
@@ -254,6 +259,7 @@ export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
 
         {/* Practical tips bar */}
         <div
+          className="reveal stagger-4"
           style={{
             maxWidth: "760px",
             margin: "var(--space-8) auto 0",

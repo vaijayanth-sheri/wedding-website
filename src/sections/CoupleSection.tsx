@@ -22,11 +22,13 @@ export const CoupleSection: React.FC<CoupleSectionProps> = ({
   return (
     <section id="roots-and-growth" className="section section-sage">
       <div className="container">
-        <SectionHeader
-          title={story.headline}
-          subtitleTelugu="ప్రేమానుబంధం · సంస్కృతి"
-          description="A shared devotion to learning, tradition, and the fertile land of Telangana"
-        />
+        <div className="reveal">
+          <SectionHeader
+            title={story.headline}
+            subtitleTelugu="ప్రేమానుబంధం · సంస్కృతి"
+            description="A shared devotion to learning, tradition, and the fertile land of Telangana"
+          />
+        </div>
 
         <div
           style={{
@@ -39,7 +41,7 @@ export const CoupleSection: React.FC<CoupleSectionProps> = ({
           }}
         >
           {/* Secondary photo placeholder */}
-          <div>
+          <div className="reveal stagger-1">
             <PlaceholderPhoto
               aspectRatio="square"
               targetPath={photography.storyImage.src}
@@ -51,6 +53,7 @@ export const CoupleSection: React.FC<CoupleSectionProps> = ({
 
           {/* Narrative Content */}
           <div
+            className="reveal stagger-2 card-interactive"
             style={{
               backgroundColor: "rgba(255, 255, 255, 0.85)",
               backdropFilter: "blur(4px)",

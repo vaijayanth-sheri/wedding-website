@@ -22,7 +22,7 @@ export const ClosingSection: React.FC<ClosingSectionProps> = ({ closing }) => {
         position: "relative",
       }}
     >
-      <div className="container-narrow">
+      <div className="container-narrow reveal">
         <BotanicalPanicle />
 
         <div style={{ marginTop: "var(--space-4)", marginBottom: "var(--space-4)" }}>

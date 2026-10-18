@@ -1,5 +1,7 @@
 import React from "react";
 import { weddingData } from "./data/wedding";
+import { FloatingParticles } from "./components/FloatingParticles";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import { HeroSection } from "./sections/HeroSection";
 import { InvitationSection } from "./sections/InvitationSection";
 import { WeddingDetailsSection } from "./sections/WeddingDetailsSection";
@@ -9,8 +11,12 @@ import { VenueSection } from "./sections/VenueSection";
 import { ClosingSection } from "./sections/ClosingSection";
 
 export const App: React.FC = () => {
+  useScrollReveal();
+
   return (
-    <div className="wedding-app">
+    <div className="wedding-app" style={{ position: "relative" }}>
+      {/* Ambient background particles (Talambralu & petals drift) */}
+      <FloatingParticles />
       {/* Accessible skip link for keyboard & screen reader users */}
       <a href="#main-content" className="skip-link">
         Skip to main invitation content

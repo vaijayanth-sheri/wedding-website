@@ -33,7 +33,7 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
       }}
     >
       <div
-        className="photo-frame"
+        className="photo-frame card-interactive"
         style={{
           position: "relative",
           width: "100%",
