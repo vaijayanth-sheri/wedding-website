@@ -1,0 +1,86 @@
+:root {
+  /* ==========================================================================
+     PROVISIONAL COLOR TOKENS
+     Rooted in Telangana heritage & agricultural warmth.
+     Designed for high contrast, calm elegance, and WCAG AA compliance.
+     ========================================================================== */
+  --color-paper: #F8F5EF;            /* Main background; warm rice-paper feel */
+  --color-paper-warm: #F3ECE0;       /* Subtly warmer paper for alternating blocks */
+  --color-ink: #292720;              /* Primary text (high contrast, >12:1 against paper) */
+  --color-ink-muted: #59554B;        /* Secondary / supporting text (>6:1 against paper) */
+  --color-ink-subtle: #7A7568;       /* Meta notes, timestamps, subtle labels */
+  --color-vermilion: #8D3028;        /* Main auspicious accent, key headings, primary buttons */
+  --color-vermilion-soft: #F6ECE9;   /* Soft wash for badges and highlights */
+  --color-vermilion-hover: #73241D;  /* Interactive hover state */
+  --color-leaf: #53684D;             /* Botanical accents, organic growth details */
+  --color-leaf-soft: #ECF1EB;        /* Subtle botanical background wash */
+  --color-leaf-dark: #3A4C36;        /* Deeper leaf green for icons / accents */
+  --color-sage: #DDE4D5;             /* Soft secondary section background */
+  --color-antique-gold: #B99A5B;     /* Ornamental rules, borders, subtle highlights only */
+  --color-antique-gold-soft: #F7F3E7;/* Gold accent wash */
+  --color-white: #FFFFFF;            /* Contrast surfaces, cards, photo frames */
+  --color-border: rgba(41, 39, 32, 0.12); /* Subtle structural dividers */
+  --color-border-gold: rgba(185, 154, 91, 0.35); /* Decorative rules */
+  --color-placeholder-bg: #EEE8DB;   /* Fallback tone for missing photos */
+
+  /* ==========================================================================
+     PROVISIONAL TYPOGRAPHY TOKENS
+     Editorial English serif + authentic Telugu serif + modern clean sans body
+     ========================================================================== */
+  --font-display-en: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --font-display-te: "Noto Serif Telugu", "Gautami", "Suranna", serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Font size scale */
+  --text-xs: 0.8125rem;    /* 13px */
+  --text-sm: 0.9375rem;    /* 15px */
+  --text-base: 1.0625rem;  /* 17px - comfortable reading measure */
+  --text-lg: 1.25rem;      /* 20px */
+  --text-xl: 1.5rem;       /* 24px */
+  --text-2xl: 1.875rem;    /* 30px */
+  --text-3xl: 2.25rem;     /* 36px */
+  --text-4xl: 3rem;        /* 48px */
+  --text-5xl: 3.75rem;     /* 60px */
+
+  /* Line heights */
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+
+  /* ==========================================================================
+     SPACING & LAYOUT SCALE (4px / 8px grid)
+     ========================================================================== */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+
+  /* Section containers */
+  --container-max: 1040px;
+  --container-narrow: 680px;
+  --container-hero: 880px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows (soft, paper-like) */
+  --shadow-sm: 0 2px 6px rgba(41, 39, 32, 0.04);
+  --shadow-card: 0 4px 20px rgba(41, 39, 32, 0.06);
+  --shadow-lifted: 0 8px 30px rgba(41, 39, 32, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 250ms ease-out;
+}
