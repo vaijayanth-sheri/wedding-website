@@ -2,6 +2,7 @@ import React from "react";
 import { FamilyHosts, CoupleData } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
 import { MugguKnot } from "../components/DecorativeMotif";
+import { ChibiScroll } from "../components/ChibiIllustrations";
 
 interface InvitationSectionProps {
   hosts: FamilyHosts;
@@ -46,6 +47,11 @@ export const InvitationSection: React.FC<InvitationSectionProps> = ({
           >
             {hosts.invitationText}
           </p>
+
+          {/* Chibi Couple holding scroll */}
+          <div style={{ margin: "var(--space-6) auto var(--space-4)" }}>
+            <ChibiScroll />
+          </div>
 
           <MugguKnot />
         </div>

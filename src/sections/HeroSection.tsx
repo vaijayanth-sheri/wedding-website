@@ -3,6 +3,7 @@ import { WeddingData } from "../data/wedding";
 import { ToranamMotif, IkatDivider } from "../components/DecorativeMotif";
 import { AuspiciousBanner } from "../components/AuspiciousBanner";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
+import { ChibiNamaste } from "../components/ChibiIllustrations";
 
 interface HeroSectionProps {
   data: WeddingData;
@@ -186,8 +187,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
           />
         </div>
 
+        {/* Chibi Bride & Groom Namaste Greeting */}
+        <div style={{ marginTop: "var(--space-6)" }}>
+          <ChibiNamaste />
+        </div>
+
         {/* Gentle scroll cue */}
-        <div style={{ marginTop: "var(--space-10)" }}>
+        <div style={{ marginTop: "var(--space-6)" }}>
           <a
             href="#invitation"
             className="btn btn-secondary"

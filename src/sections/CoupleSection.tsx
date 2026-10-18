@@ -3,6 +3,7 @@ import { CoupleData, PhotographyConfig } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
 import { BotanicalPanicle } from "../components/DecorativeMotif";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
+import { ChibiWalking } from "../components/ChibiIllustrations";
 
 interface CoupleSectionProps {
   couple: CoupleData;
@@ -63,6 +64,10 @@ export const CoupleSection: React.FC<CoupleSectionProps> = ({
               boxShadow: "var(--shadow-card)",
             }}
           >
+            <div style={{ marginBottom: "var(--space-2)" }}>
+              <ChibiWalking />
+            </div>
+
             <div style={{ marginBottom: "var(--space-3)" }}>
               <BotanicalPanicle />
             </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ClosingBlessing } from "../data/wedding";
 import { IkatDivider, BotanicalPanicle } from "../components/DecorativeMotif";
+import { ChibiBlessings } from "../components/ChibiIllustrations";
 
 interface ClosingSectionProps {
   closing: ClosingBlessing;
@@ -50,6 +51,11 @@ export const ClosingSection: React.FC<ClosingSectionProps> = ({ closing }) => {
           >
             "{closing.eldersBlessing}"
           </p>
+        </div>
+
+        {/* Chibi Couple bowing for blessings */}
+        <div style={{ margin: "var(--space-4) auto var(--space-4)" }}>
+          <ChibiBlessings />
         </div>
 
         <IkatDivider />

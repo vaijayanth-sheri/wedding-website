@@ -1,6 +1,7 @@
 import React from "react";
 import { WeddingEvent } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
+import { ChibiTalambralu } from "../components/ChibiIllustrations";
 
 interface CeremonyScheduleSectionProps {
   schedule: WeddingEvent[];
@@ -22,6 +23,11 @@ export const CeremonyScheduleSection: React.FC<CeremonyScheduleSectionProps> = (
             subtitleTelugu="కార్యక్రమ వివరాలు"
             description="Sequence of ceremonies and gatherings celebrating our union"
           />
+
+          {/* Chibi Couple throwing Talambralu rice */}
+          <div style={{ margin: "var(--space-4) auto var(--space-8)" }}>
+            <ChibiTalambralu />
+          </div>
         </div>
 
         <div

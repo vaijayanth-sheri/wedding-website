@@ -1,6 +1,7 @@
 import React from "react";
 import { MainCeremony } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
+import { ChibiPuja } from "../components/ChibiIllustrations";
 
 interface WeddingDetailsSectionProps {
   ceremony: MainCeremony;
@@ -22,6 +23,11 @@ export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
             subtitleTelugu={ceremony.eventTitleTelugu}
             description="Essential date, time, and location information for the auspicious occasion"
           />
+
+          {/* Chibi Couple in puja / prayer pose */}
+          <div style={{ margin: "var(--space-4) auto var(--space-8)" }}>
+            <ChibiPuja />
+          </div>
         </div>
 
         <div

@@ -1,0 +1,120 @@
+/* ==========================================================================
+   CHIBI COUPLE ILLUSTRATION ANIMATIONS
+   Subtle, delightful micro-animations for the baby-style characters.
+   ========================================================================== */
+
+/* Gentle floating / bobbing up and down */
+@keyframes chibi-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Subtle side-to-side sway */
+@keyframes chibi-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(2deg); }
+  75%      { transform: rotate(-2deg); }
+}
+
+/* Gentle breathing scale */
+@keyframes chibi-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); }
+}
+
+/* Talambralu rice falling */
+@keyframes rice-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(40px) rotate(180deg); opacity: 0; }
+}
+
+/* Fire flicker */
+@keyframes fire-flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  25%      { transform: scaleY(1.08) scaleX(0.95); }
+  50%      { transform: scaleY(0.95) scaleX(1.05); }
+  75%      { transform: scaleY(1.05) scaleX(0.98); }
+}
+
+/* Scroll gentle pulse */
+@keyframes scroll-glow {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(185, 154, 91, 0.2)); }
+  50%      { filter: drop-shadow(0 0 8px rgba(185, 154, 91, 0.4)); }
+}
+
+/* ---- Wrapper classes ---- */
+
+.chibi-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wedding-sticker {
+  display: block;
+  width: min(100%, 280px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 12px rgba(41, 39, 32, 0.12));
+}
+
+.wedding-sticker--wide {
+  width: min(100%, 310px);
+}
+
+@media (max-width: 480px) {
+  .wedding-sticker {
+    width: min(100%, 230px);
+  }
+
+  .wedding-sticker--wide {
+    width: min(100%, 285px);
+  }
+}
+
+.chibi-float {
+  animation: chibi-float 4s ease-in-out infinite;
+}
+
+.chibi-sway {
+  animation: chibi-sway 5s ease-in-out infinite;
+}
+
+.chibi-breathe {
+  animation: chibi-breathe 3.5s ease-in-out infinite;
+}
+
+.chibi-fire {
+  transform-origin: bottom center;
+  animation: fire-flicker 1.5s ease-in-out infinite;
+}
+
+.chibi-scroll-glow {
+  animation: chibi-sway 5s ease-in-out infinite, scroll-glow 3s ease-in-out infinite;
+}
+
+.chibi-rice {
+  animation: rice-fall 2s ease-in infinite;
+}
+
+.chibi-rice:nth-child(2) { animation-delay: 0.3s; }
+.chibi-rice:nth-child(3) { animation-delay: 0.6s; }
+.chibi-rice:nth-child(4) { animation-delay: 0.9s; }
+.chibi-rice:nth-child(5) { animation-delay: 1.2s; }
+.chibi-rice:nth-child(6) { animation-delay: 0.15s; }
+.chibi-rice:nth-child(7) { animation-delay: 0.45s; }
+.chibi-rice:nth-child(8) { animation-delay: 0.75s; }
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .chibi-float,
+  .chibi-sway,
+  .chibi-breathe,
+  .chibi-fire,
+  .chibi-scroll-glow,
+  .chibi-rice {
+    animation: none;
+  }
+}
