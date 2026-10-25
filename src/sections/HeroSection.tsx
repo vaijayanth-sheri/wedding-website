@@ -4,6 +4,7 @@ import { ToranamMotif, IkatDivider } from "../components/DecorativeMotif";
 import { AuspiciousBanner } from "../components/AuspiciousBanner";
 import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 import { ChibiNamaste } from "../components/ChibiIllustrations";
+import "../styles/hero.css";
 
 interface HeroSectionProps {
   data: WeddingData;
@@ -32,14 +33,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
       }}
     >
       {/* Mango Leaf Toranam framing */}
-      <ToranamMotif />
+      <ToranamMotif className="hero-toranam-animate" />
 
       {/* Auspicious invocation (family approved) */}
-      <AuspiciousBanner invocation={auspiciousInvocation} />
+      <div className="hero-elem-reveal hero-step-invocation">
+        <AuspiciousBanner invocation={auspiciousInvocation} />
+      </div>
 
       <div className="container-hero" style={{ textAlign: "center" }}>
         {/* Short invitation lead */}
         <p
+          className="hero-elem-reveal hero-step-label"
           style={{
             fontFamily: "var(--font-display-en)",
             fontSize: "clamp(1.1rem, 2.5vw, 1.35rem)",
@@ -54,7 +58,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
 
         {/* Telugu script names line */}
         <div
-          className="font-telugu"
+          className="font-telugu hero-elem-reveal hero-step-telugu-names"
           style={{
             fontSize: "clamp(1.35rem, 3.5vw, 1.85rem)",
             color: "var(--color-vermilion)",
@@ -70,6 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
 
         {/* English Primary Names Heading */}
         <h1
+          className="hero-elem-reveal hero-step-heading"
           style={{
             fontFamily: "var(--font-display-en)",
             fontSize: "clamp(2.75rem, 7vw, 4.5rem)",
@@ -103,6 +108,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
 
         {/* Couple Invitation Sentence */}
         <p
+          className="hero-elem-reveal hero-step-invitation-line"
           style={{
             fontSize: "clamp(1rem, 2vw, 1.15rem)",
             color: "var(--color-ink-muted)",
@@ -115,10 +121,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         </p>
 
         {/* Centered Ikat Divider */}
-        <IkatDivider />
+        <IkatDivider className="hero-ikat-animate" />
 
         {/* Date and Venue summary banner */}
         <div
+          className="hero-elem-reveal hero-step-date-banner"
           style={{
             display: "inline-flex",
             flexWrap: "wrap",
@@ -177,7 +184,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         </div>
 
         {/* Hero Photo Placeholder / Real Portrait */}
-        <div style={{ marginTop: "var(--space-4)" }}>
+        <div className="hero-photo-mask-reveal" style={{ marginTop: "var(--space-4)" }}>
           <PlaceholderPhoto
             aspectRatio="portrait"
             targetPath={photography.heroImage.src}
@@ -188,12 +195,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         </div>
 
         {/* Chibi Bride & Groom Namaste Greeting */}
-        <div style={{ marginTop: "var(--space-6)" }}>
+        <div className="hero-elem-reveal hero-step-chibi" style={{ marginTop: "var(--space-6)" }}>
           <ChibiNamaste />
         </div>
 
         {/* Gentle scroll cue */}
-        <div style={{ marginTop: "var(--space-6)" }}>
+        <div className="hero-elem-reveal hero-step-scroll-cue" style={{ marginTop: "var(--space-6)" }}>
           <a
             href="#invitation"
             className="btn btn-secondary"

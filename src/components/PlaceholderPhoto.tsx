@@ -33,7 +33,7 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
       }}
     >
       <div
-        className="photo-frame card-interactive"
+        className="photo-frame card-interactive photo-reveal-container"
         style={{
           position: "relative",
           width: "100%",
@@ -51,10 +51,14 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
           textAlign: "center",
         }}
       >
+        {/* Cinematic vertical wipe overlay */}
+        <div className="photo-reveal-curtain" aria-hidden="true" />
+
         {isAvailable ? (
           <img
             src={targetPath}
             alt={altText}
+            className="photo-reveal-content"
             style={{
               width: "100%",
               height: "100%",
@@ -65,6 +69,7 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
           <div
             role="img"
             aria-label={`${altText} (Placeholder)`}
+            className="photo-reveal-content"
             style={{
               display: "flex",
               flexDirection: "column",

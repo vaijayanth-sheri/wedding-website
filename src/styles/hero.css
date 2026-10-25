@@ -1,0 +1,251 @@
+/* ==========================================================================
+   CINEMATIC HERO ENTRANCE CHOREOGRAPHY (DELIBERATE, SLOW & POETIC PACE)
+   Generous pacing allowing guests to absorb and feel each sacred motif
+   and detail before the next element unfolds.
+   ========================================================================== */
+
+/* Keyframe Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroSoftFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes strokeDrawGarland {
+  0% {
+    stroke-dashoffset: 260;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes strokeDrawLine {
+  0% {
+    stroke-dashoffset: 120;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes motifUnfurl {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mask reveal / curtain expansion for the photo frame */
+@keyframes photoMaskExpand {
+  0% {
+    clip-path: inset(20% 25% 20% 25% round var(--radius-lg));
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    clip-path: inset(0 0 0 0 round var(--radius-lg));
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Base class for hero animated items */
+.hero-elem-reveal {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CHOREOGRAPHED ACTS (Generously spaced so each transition is felt)
+   Act I: Sacred Garland & Divine Invocation (0.4s - 3.0s)
+   Act II: Grand Names Announcement (3.2s - 7.0s)
+   Act III: The Sacred Date & Muhurtham (7.2s - 9.5s)
+   Act IV: The Couple Portrait & Blessings (9.8s - 13.0s)
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Act I - Step 1: Toranam Garland String (starts at 0.4s, glides for 2.4s) */
+.hero-toranam-animate .toranam-garland-path {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: strokeDrawGarland 2.4s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s;
+}
+
+/* Toranam leaves bloom slowly as the cord settles */
+.hero-toranam-animate .toranam-leaf-group-1,
+.hero-toranam-animate .toranam-leaf-group-2,
+.hero-toranam-animate .toranam-leaf-group-center,
+.hero-toranam-animate .toranam-leaf-group-3,
+.hero-toranam-animate .toranam-leaf-group-4,
+.hero-toranam-animate .toranam-marigold {
+  opacity: 0;
+  animation: motifUnfurl 1.6s cubic-bezier(0.34, 1.3, 0.64, 1) forwards;
+}
+
+.hero-toranam-animate .toranam-marigold {
+  animation-delay: 1.6s;
+}
+.hero-toranam-animate .toranam-leaf-group-center {
+  animation-delay: 1.8s;
+}
+.hero-toranam-animate .toranam-leaf-group-2,
+.hero-toranam-animate .toranam-leaf-group-3 {
+  animation-delay: 2.1s;
+}
+.hero-toranam-animate .toranam-leaf-group-1,
+.hero-toranam-animate .toranam-leaf-group-4 {
+  animation-delay: 2.4s;
+}
+
+/* Act I - Step 2: Auspicious Invocation banner (starts at 2.6s) */
+.hero-step-invocation {
+  animation-name: heroSoftFade;
+  animation-duration: 1.8s;
+  animation-delay: 2.6s;
+}
+
+/* Act II - Step 3: "WEDDING INVITATION" label (starts at 3.6s) */
+.hero-step-label {
+  animation-name: heroSoftFade;
+  animation-duration: 1.6s;
+  animation-delay: 3.6s;
+}
+
+/* Act II - Step 4: Telugu Traditional Names (starts at 4.6s) */
+.hero-step-telugu-names {
+  animation-name: heroFadeUp;
+  animation-duration: 2.0s;
+  animation-delay: 4.6s;
+}
+
+/* Act II - Step 5: Grand English Names Heading (starts at 5.8s) */
+.hero-step-heading {
+  animation-name: heroFadeUp;
+  animation-duration: 2.2s;
+  animation-delay: 5.8s;
+}
+
+/* Act II - Step 6: Couple invitation sentence (starts at 7.0s) */
+.hero-step-invitation-line {
+  animation-name: heroSoftFade;
+  animation-duration: 1.8s;
+  animation-delay: 7.0s;
+}
+
+/* Act III - Step 7: Ikat Divider stroke draw & diamond shimmer (starts at 8.0s) */
+.hero-ikat-animate {
+  opacity: 0;
+  animation: heroSoftFade 1.4s ease-out forwards 8.0s;
+}
+
+.hero-ikat-animate .ikat-line-left,
+.hero-ikat-animate .ikat-line-right {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: strokeDrawLine 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards 8.2s;
+}
+
+.hero-ikat-animate .ikat-diamond-node {
+  opacity: 0;
+  animation: motifUnfurl 1.4s cubic-bezier(0.34, 1.3, 0.64, 1) forwards 9.0s;
+}
+
+/* Act III - Step 8: Date and Venue Summary Banner (starts at 9.6s) */
+.hero-step-date-banner {
+  animation-name: heroFadeUp;
+  animation-duration: 1.8s;
+  animation-delay: 9.6s;
+}
+
+/* Act IV - Step 9: Photo Placeholder with luxurious curtain/mask reveal (starts at 10.8s) */
+.hero-photo-mask-reveal {
+  opacity: 0;
+  animation: photoMaskExpand 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 10.8s;
+}
+
+/* Act IV - Step 10: Chibi greeting & scroll cue (starts at 12.2s) */
+.hero-step-chibi {
+  animation-name: heroSoftFade;
+  animation-duration: 1.8s;
+  animation-delay: 12.2s;
+}
+
+.hero-step-scroll-cue {
+  animation-name: heroSoftFade;
+  animation-duration: 1.6s;
+  animation-delay: 13.0s;
+}
+
+/* ==========================================================================
+   PREFERS-REDUCED-MOTION OVERRIDES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-elem-reveal,
+  .hero-ikat-animate,
+  .hero-photo-mask-reveal,
+  .hero-toranam-animate .toranam-leaf-group-1,
+  .hero-toranam-animate .toranam-leaf-group-2,
+  .hero-toranam-animate .toranam-leaf-group-center,
+  .hero-toranam-animate .toranam-leaf-group-3,
+  .hero-toranam-animate .toranam-leaf-group-4,
+  .hero-toranam-animate .toranam-marigold,
+  .hero-ikat-animate .ikat-diamond-node {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  .hero-toranam-animate .toranam-garland-path,
+  .hero-ikat-animate .ikat-line-left,
+  .hero-ikat-animate .ikat-line-right {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

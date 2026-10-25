@@ -27,8 +27,8 @@ export function useScrollReveal() {
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: "0px 0px -70px 0px", // Waits until element is visibly inside viewport before revealing
+        threshold: 0.12,
+        rootMargin: "0px 0px -120px 0px", // Waits until element is well inside viewport
       }
     );
 

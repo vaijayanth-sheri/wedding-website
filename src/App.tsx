@@ -1,6 +1,7 @@
 import React from "react";
 import { weddingData } from "./data/wedding";
 import { FloatingParticles } from "./components/FloatingParticles";
+import { ScrollStoryline } from "./components/ScrollStoryline";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { HeroSection } from "./sections/HeroSection";
 import { InvitationSection } from "./sections/InvitationSection";
@@ -17,6 +18,8 @@ export const App: React.FC = () => {
     <div className="wedding-app" style={{ position: "relative" }}>
       {/* Ambient background particles (Talambralu & petals drift) */}
       <FloatingParticles />
+      {/* Scroll Storytelling spine connecting sections */}
+      <ScrollStoryline />
       {/* Accessible skip link for keyboard & screen reader users */}
       <a href="#main-content" className="skip-link">
         Skip to main invitation content
@@ -51,6 +54,7 @@ export const App: React.FC = () => {
         >
           <a
             href="#hero"
+            className="nav-pill-link"
             style={{
               fontSize: "var(--text-xs)",
               fontWeight: 600,
@@ -65,6 +69,7 @@ export const App: React.FC = () => {
           <span style={{ color: "var(--color-border)" }}>|</span>
           <a
             href="#invitation"
+            className="nav-pill-link"
             style={{
               fontSize: "var(--text-xs)",
               fontWeight: 600,
@@ -79,6 +84,7 @@ export const App: React.FC = () => {
           <span style={{ color: "var(--color-border)" }}>|</span>
           <a
             href="#details"
+            className="nav-pill-link"
             style={{
               fontSize: "var(--text-xs)",
               fontWeight: 600,
@@ -93,6 +99,7 @@ export const App: React.FC = () => {
           <span style={{ color: "var(--color-border)" }}>|</span>
           <a
             href="#schedule"
+            className="nav-pill-link"
             style={{
               fontSize: "var(--text-xs)",
               fontWeight: 600,
@@ -107,6 +114,7 @@ export const App: React.FC = () => {
           <span style={{ color: "var(--color-border)" }}>|</span>
           <a
             href="#venue"
+            className="nav-pill-link"
             style={{
               fontSize: "var(--text-xs)",
               fontWeight: 600,

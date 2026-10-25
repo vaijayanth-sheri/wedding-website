@@ -27,30 +27,35 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       }}
     >
       {subtitleTelugu && (
-        <p
-          className="font-telugu"
-          style={{
-            color: "var(--color-vermilion)",
-            fontSize: "var(--text-lg)",
-            fontWeight: 600,
-            marginBottom: "var(--space-1)",
-          }}
-        >
-          {subtitleTelugu}
-        </p>
+        <div className="section-header-mask">
+          <p
+            className="font-telugu section-header-line"
+            style={{
+              color: "var(--color-vermilion)",
+              fontSize: "var(--text-lg)",
+              fontWeight: 600,
+              marginBottom: "var(--space-1)",
+            }}
+          >
+            {subtitleTelugu}
+          </p>
+        </div>
       )}
 
-      <h2
-        style={{
-          fontFamily: "var(--font-display-en)",
-          fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-          color: "var(--color-ink)",
-          fontWeight: 600,
-          letterSpacing: "0.01em",
-        }}
-      >
-        {title}
-      </h2>
+      <div className="section-header-mask">
+        <h2
+          className="section-header-line"
+          style={{
+            fontFamily: "var(--font-display-en)",
+            fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+            color: "var(--color-ink)",
+            fontWeight: 600,
+            letterSpacing: "0.01em",
+          }}
+        >
+          {title}
+        </h2>
+      </div>
 
       {description && (
         <p

@@ -271,15 +271,16 @@ p {
 
 /* ==========================================================================
    SCROLL REVEAL SYSTEM (EDITORIAL REVEALS)
-   Noticeable, cinematic slide-and-unblur entrance on scroll
+   Generous, cinematic slide-and-unblur entrance on scroll.
+   Slower pace so the visitor feels each section arriving.
    ========================================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(48px) scale(0.96);
-  filter: blur(4px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(56px) scale(0.95);
+  filter: blur(6px);
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
@@ -289,18 +290,18 @@ p {
   filter: blur(0px);
 }
 
-.stagger-1 { transition-delay: 100ms; }
-.stagger-2 { transition-delay: 220ms; }
-.stagger-3 { transition-delay: 340ms; }
-.stagger-4 { transition-delay: 460ms; }
+.stagger-1 { transition-delay: 200ms; }
+.stagger-2 { transition-delay: 450ms; }
+.stagger-3 { transition-delay: 700ms; }
+.stagger-4 { transition-delay: 950ms; }
 
 /* ==========================================================================
    INTERACTIVE CARDS (IMPACTFUL HOVER ELEVATION)
    ========================================================================== */
 .card-interactive {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
@@ -311,135 +312,410 @@ p {
 }
 
 /* ==========================================================================
-   KINETIC CULTURAL MOTIFS (DOUBLED SCALE & VISIBLE SWAY)
+   MICRO-INTERACTIONS & NAVIGATION PILLS
    ========================================================================== */
-/* 1. Toranam Mango Leaves & Marigold Sway */
-.toranam-leaf-group-1,
-.toranam-leaf-group-2,
-.toranam-leaf-group-center,
-.toranam-leaf-group-3,
-.toranam-leaf-group-4 {
-  transform-box: fill-box;
-  transform-origin: 50% 0%;
+.nav-pill-link {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
-.toranam-leaf-group-1 {
-  animation: toranamSwayLeft 4.5s ease-in-out infinite alternate;
+.nav-pill-link:hover {
+  color: var(--color-vermilion) !important;
+  background-color: var(--color-vermilion-soft);
+  transform: translateY(-1px);
 }
 
-.toranam-leaf-group-2 {
-  animation: toranamSwayRight 5s ease-in-out infinite alternate 0.3s;
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.toranam-leaf-group-center {
-  animation: toranamSwayLeft 5.5s ease-in-out infinite alternate 0.6s;
+.btn:active {
+  transform: scale(0.97);
 }
 
-.toranam-leaf-group-3 {
-  animation: toranamSwayRight 4.8s ease-in-out infinite alternate 0.2s;
+/* ==========================================================================
+   EDITORIAL TYPOGRAPHY VERTICAL-MASK REVEALS
+   Reveals section titles cleanly as if emerging from an invisible baseline.
+   DELAYED from the parent .reveal so the mask effect is distinctly visible
+   after the parent container has already faded in.
+   ========================================================================== */
+.section-header-mask {
+  overflow: hidden;
+  display: block;
 }
 
-.toranam-leaf-group-4 {
-  animation: toranamSwayLeft 5.2s ease-in-out infinite alternate 0.5s;
+.section-header-line {
+  transform: translateY(110%);
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease-out;
+  will-change: transform;
 }
 
-.toranam-marigold {
+/* Delay the mask reveal so it starts AFTER the parent .reveal finishes fading in */
+.reveal.is-revealed .section-header-line {
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+/* If within a stagger-2, add even more delay */
+.reveal.is-revealed .section-header-mask:nth-child(2) .section-header-line {
+  transition-delay: 0.7s;
+}
+
+/* ==========================================================================
+   CINEMATIC PHOTO REVEALS (VERTICAL WIPE & SCALE)
+   Dramatic curtain that wipes away AFTER the parent .reveal settles.
+   ========================================================================== */
+.photo-reveal-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-reveal-curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--color-paper-warm) 0%,
+    rgba(243, 236, 224, 0.95) 60%,
+    rgba(243, 236, 224, 0.7) 100%
+  );
+  z-index: 2;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1) 0.6s;
+  pointer-events: none;
+}
+
+.photo-reveal-content {
+  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s,
+              filter 1.8s ease-out 0.4s;
+  transform: scale(1.12);
+  filter: saturate(0.3);
+}
+
+.reveal.is-revealed .photo-reveal-curtain,
+.is-revealed .photo-reveal-curtain {
+  transform: scaleY(0);
+}
+
+.reveal.is-revealed .photo-reveal-content,
+.is-revealed .photo-reveal-content {
+  transform: scale(1);
+  filter: saturate(1);
+}
+
+/* ==========================================================================
+   BOTANICAL LINE DRAWING (ON VIEWPORT ENTRY)
+   Stem draws itself, then seeds bloom sequentially along it.
+   Continuous kinetic animation starts ONLY after the draw completes.
+   ========================================================================== */
+.botanical-stem {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.2, 0.8, 0.3, 1) 0.3s;
+}
+
+.botanical-seed,
+.botanical-seed-tip {
   transform-box: fill-box;
   transform-origin: center;
-  animation: marigoldPulse 3.5s ease-in-out infinite alternate;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.9s ease-out,
+              transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes toranamSwayLeft {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(-7deg); }
-  100% { transform: rotate(4deg); }
+.reveal.is-revealed .botanical-stem,
+.is-revealed .botanical-stem {
+  stroke-dashoffset: 0;
 }
 
-@keyframes toranamSwayRight {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(7deg); }
-  100% { transform: rotate(-4deg); }
+.reveal.is-revealed .botanical-seed-1,
+.is-revealed .botanical-seed-1 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.9s;
 }
 
-@keyframes marigoldPulse {
-  0% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0px transparent);
-  }
-  50% {
-    transform: scale(1.35);
-    filter: drop-shadow(0 0 6px rgba(224, 90, 43, 0.8));
-    fill: #C43825;
-  }
-  100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0px transparent);
-  }
+.reveal.is-revealed .botanical-seed-2,
+.is-revealed .botanical-seed-2 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.3s;
 }
 
-/* 2. Ikat Diamond Shimmer */
-.ikat-diamond-pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ikatShimmer 3.5s ease-in-out infinite alternate;
+.reveal.is-revealed .botanical-seed-3,
+.is-revealed .botanical-seed-3 {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.7s;
 }
 
-@keyframes ikatShimmer {
-  0% {
-    stroke-width: 2;
-    transform: scale(1);
-    opacity: 0.85;
-  }
-  50% {
-    stroke-width: 3.2;
-    transform: scale(1.3);
-    opacity: 1;
-    stroke: var(--color-vermilion);
-    filter: drop-shadow(0 0 5px rgba(185, 154, 91, 0.8));
-  }
-  100% {
-    stroke-width: 2;
-    transform: scale(1);
-    opacity: 0.85;
-  }
+.reveal.is-revealed .botanical-seed-tip,
+.is-revealed .botanical-seed-tip {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 2.1s;
 }
 
-/* 3. Botanical Panicle Wind Flex */
+/* OVERRIDE: Disable conflicting continuous kinetic animations until revealed */
 .botanical-svg {
   transform-origin: bottom left;
-  animation: botanicalBreeze 5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 2px 8px rgba(83, 104, 77, 0.12));
 }
 
-.botanical-seed-tip {
-  animation: seedGlow 4s ease-in-out infinite alternate;
+.reveal:not(.is-revealed) .botanical-svg {
+  animation: none;
 }
 
-@keyframes botanicalBreeze {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(-6deg) translateY(-2px); }
-  100% { transform: rotate(3deg); }
+.reveal.is-revealed .botanical-svg,
+.is-revealed .botanical-svg {
+  animation: botanicalBreeze 5s ease-in-out infinite alternate 2.6s;
 }
 
-@keyframes seedGlow {
-  0% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); filter: drop-shadow(0 0 4px rgba(83, 104, 77, 0.7)); }
-  100% { opacity: 0.8; transform: scale(1); }
+/* Seed tip glow only starts after the draw-in completes */
+.reveal:not(.is-revealed) .botanical-seed-tip {
+  animation: none;
 }
 
-/* 4. Muggu Knot Aura */
+.reveal.is-revealed .botanical-seed-tip,
+.is-revealed .botanical-seed-tip {
+  animation: seedGlow 3.5s ease-in-out infinite alternate 3s;
+}
+
+/* ==========================================================================
+   LIVING MUGGU KNOT DRAWING (ON VIEWPORT ENTRY)
+   Knot lines trace themselves, then rangoli dots expand into place.
+   Continuous breathing starts ONLY after the drawing completes.
+   ========================================================================== */
+.muggu-knot-path {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
+}
+
+.muggu-knot-path-secondary {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1) 0.6s;
+}
+
+.muggu-wings {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: center;
+  transition: opacity 1s ease-out 1.8s, transform 1s cubic-bezier(0.34, 1.4, 0.64, 1) 1.8s;
+}
+
+.muggu-center-dot,
+.muggu-side-dot-top,
+.muggu-side-dot-bottom,
+.muggu-side-dot-left,
+.muggu-side-dot-right {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal.is-revealed .muggu-knot-path,
+.is-revealed .muggu-knot-path,
+.reveal.is-revealed .muggu-knot-path-secondary,
+.is-revealed .muggu-knot-path-secondary {
+  stroke-dashoffset: 0;
+}
+
+.reveal.is-revealed .muggu-wings,
+.is-revealed .muggu-wings {
+  opacity: 0.9;
+  transform: scale(1);
+}
+
+.reveal.is-revealed .muggu-center-dot,
+.is-revealed .muggu-center-dot {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.0s;
+}
+
+.reveal.is-revealed .muggu-side-dot-top,
+.is-revealed .muggu-side-dot-top {
+  opacity: 0.9;
+  transform: scale(1);
+  transition-delay: 1.3s;
+}
+
+.reveal.is-revealed .muggu-side-dot-bottom,
+.is-revealed .muggu-side-dot-bottom {
+  opacity: 0.9;
+  transform: scale(1);
+  transition-delay: 1.5s;
+}
+
+.reveal.is-revealed .muggu-side-dot-left,
+.is-revealed .muggu-side-dot-left {
+  opacity: 0.9;
+  transform: scale(1);
+  transition-delay: 1.7s;
+}
+
+.reveal.is-revealed .muggu-side-dot-right,
+.is-revealed .muggu-side-dot-right {
+  opacity: 0.9;
+  transform: scale(1);
+  transition-delay: 1.9s;
+}
+
+/* OVERRIDE: Disable continuous muggu breathing until the drawing finishes */
 .muggu-svg {
   transition: transform var(--transition-normal);
-  animation: mugguBreath 6s ease-in-out infinite alternate;
   transform-origin: center;
+  filter: drop-shadow(0 4px 14px rgba(185, 154, 91, 0.16));
 }
 
-@keyframes mugguBreath {
-  0% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 3px rgba(185, 154, 91, 0.6)); }
-  100% { transform: scale(1); opacity: 0.85; }
+.reveal:not(.is-revealed) .muggu-svg {
+  animation: none;
+}
+
+.reveal.is-revealed .muggu-svg,
+.is-revealed .muggu-svg {
+  animation: mugguBreath 6s ease-in-out infinite alternate 2.8s;
 }
 
 .muggu-knot:hover .muggu-svg {
-  transform: scale(1.2);
+  transform: scale(1.12);
+}
+
+/* ==========================================================================
+   SCROLL STORYTELLING SPINE (SACRED KANKANAM THREAD)
+   ========================================================================== */
+.scroll-storyline-track {
+  position: fixed;
+  top: 0;
+  left: 24px;
+  width: 4px;
+  height: 100vh;
+  background-color: transparent;
+  pointer-events: none;
+  z-index: 35;
+}
+
+.scroll-storyline-braid {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  width: 2px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(185, 154, 91, 0.22) 0px,
+    rgba(185, 154, 91, 0.22) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  border-radius: var(--radius-full);
+}
+
+.scroll-storyline-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--color-antique-gold) 0%,
+    var(--color-vermilion) 60%,
+    var(--color-leaf-dark) 100%
+  );
+  transform-origin: top;
+  will-change: transform;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(185, 154, 91, 0.4);
+}
+
+.scroll-storyline-node {
+  position: absolute;
+  left: -7px;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-out;
+}
+
+.scroll-storyline-core {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-vermilion);
+  border: 1.5px solid var(--color-white);
+  box-shadow: 0 0 10px var(--color-vermilion), 0 0 4px var(--color-antique-gold);
+  z-index: 2;
+}
+
+.scroll-storyline-aura {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(224, 90, 43, 0.6) 0%, transparent 70%);
+  animation: storylineAuraPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes storylineAuraPulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 1; filter: drop-shadow(0 0 6px rgba(185, 154, 91, 0.8)); }
+}
+
+@media (max-width: 900px) {
+  .scroll-storyline-track {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   PREFERS REDUCED MOTION OVERRIDES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .section-header-line {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .photo-reveal-curtain {
+    display: none !important;
+  }
+  .photo-reveal-content {
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .botanical-stem,
+  .muggu-knot-path {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  .botanical-seed,
+  .botanical-seed-tip,
+  .muggu-center-dot,
+  .muggu-side-dot-left,
+  .muggu-side-dot-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-storyline-track {
+    display: none !important;
+  }
 }
 
