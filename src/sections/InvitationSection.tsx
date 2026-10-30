@@ -1,17 +1,20 @@
 import React from "react";
-import { FamilyHosts, CoupleData } from "../data/wedding";
+import { FamilyHosts, CoupleData, PhotographyConfig } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
 import { MugguKnot } from "../components/DecorativeMotif";
 import { ChibiScroll } from "../components/ChibiIllustrations";
+import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 
 interface InvitationSectionProps {
   hosts: FamilyHosts;
   couple: CoupleData;
+  photography: PhotographyConfig;
 }
 
 export const InvitationSection: React.FC<InvitationSectionProps> = ({
   hosts,
   couple,
+  photography,
 }) => {
   return (
     <section id="invitation" className="section section-warm">
@@ -47,6 +50,18 @@ export const InvitationSection: React.FC<InvitationSectionProps> = ({
           >
             {hosts.invitationText}
           </p>
+
+          {/* Full-Body Couple Walking Shot */}
+          <div style={{ margin: "var(--space-6) auto var(--space-8)", maxWidth: "460px" }}>
+            <PlaceholderPhoto
+              aspectRatio="portrait"
+              targetPath={photography.walkingShot.src}
+              altText={photography.walkingShot.alt}
+              isAvailable={photography.walkingShot.isAvailable}
+              caption={photography.walkingShot.caption}
+              objectPosition="center 15%"
+            />
+          </div>
 
           {/* Chibi Couple holding scroll */}
           <div style={{ margin: "var(--space-6) auto var(--space-4)" }}>

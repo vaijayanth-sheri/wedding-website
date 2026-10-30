@@ -2,7 +2,7 @@ import React from "react";
 import { WeddingData } from "../data/wedding";
 import { ToranamMotif, IkatDivider } from "../components/DecorativeMotif";
 import { AuspiciousBanner } from "../components/AuspiciousBanner";
-import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
+import { HeroKalyanaTeraPhoto } from "../components/HeroKalyanaTeraPhoto";
 import { ChibiNamaste } from "../components/ChibiIllustrations";
 import "../styles/hero.css";
 
@@ -183,14 +183,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
           </div>
         </div>
 
-        {/* Hero Photo Placeholder / Real Portrait */}
+        {/* Hero Photo: Interactive Kalyana Tera (Sacred Silk Curtain Drop on Touch) */}
         <div className="hero-photo-mask-reveal" style={{ marginTop: "var(--space-4)" }}>
-          <PlaceholderPhoto
-            aspectRatio="portrait"
-            targetPath={photography.heroImage.src}
-            altText={photography.heroImage.alt}
-            isAvailable={photography.heroImage.isAvailable}
-            caption="Provisional hero photo placement (public/images/hero-couple.jpg)"
+          <HeroKalyanaTeraPhoto
+            src={photography.heroImage.src}
+            alt={photography.heroImage.alt}
+            caption={photography.heroImage.caption}
+            objectPosition="center 20%"
           />
         </div>
 

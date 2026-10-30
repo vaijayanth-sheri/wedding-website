@@ -1,12 +1,14 @@
 import React from "react";
-import { MainCeremony } from "../data/wedding";
+import { MainCeremony, PhotographyConfig } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
+import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 
 interface VenueSectionProps {
   ceremony: MainCeremony;
+  photography: PhotographyConfig;
 }
 
-export const VenueSection: React.FC<VenueSectionProps> = ({ ceremony }) => {
+export const VenueSection: React.FC<VenueSectionProps> = ({ ceremony, photography }) => {
   const isDirectionsReady =
     ceremony.directionsUrl &&
     ceremony.directionsUrl.length > 0 &&
@@ -34,6 +36,18 @@ export const VenueSection: React.FC<VenueSectionProps> = ({ ceremony }) => {
             textAlign: "center",
           }}
         >
+          {/* Venue Image */}
+          <div style={{ marginBottom: "var(--space-6)" }}>
+            <PlaceholderPhoto
+              aspectRatio="landscape"
+              targetPath={photography.venueImage.src}
+              altText={photography.venueImage.alt}
+              isAvailable={photography.venueImage.isAvailable}
+              caption={photography.venueImage.caption}
+              objectPosition="center 40%"
+            />
+          </div>
+
           {/* Location Pin Icon */}
           <div
             style={{

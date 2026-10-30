@@ -1,22 +1,58 @@
 import React from "react";
-import { MainCeremony } from "../data/wedding";
+import { MainCeremony, PhotographyConfig } from "../data/wedding";
 import { SectionHeader } from "../components/SectionHeader";
 import { ChibiPuja } from "../components/ChibiIllustrations";
 
 interface WeddingDetailsSectionProps {
   ceremony: MainCeremony;
+  photography: PhotographyConfig;
 }
 
 export const WeddingDetailsSection: React.FC<WeddingDetailsSectionProps> = ({
   ceremony,
+  photography,
 }) => {
   const isDateConfirmed = ceremony.date !== "TO_BE_CONFIRMED";
   const isMuhurthamConfirmed = !ceremony.muhurthamTime.includes("TO_BE_CONFIRMED");
   const isVenueConfirmed = !ceremony.venueName.includes("TO_BE_CONFIRMED");
 
   return (
-    <section id="details" className="section section-paper">
-      <div className="container">
+    <section id="details" className="section section-paper" style={{ position: "relative", overflow: "hidden" }}>
+      {/* Sacred Traditional Ritual Backdrop (04-traditional-ritual.jpg) with gentle opacity */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `url(${photography.ritualImage.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center 35%",
+          opacity: 0.16,
+          filter: "sepia(0.2) saturate(1.15)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      {/* Soft warm gradient overlay ensuring cards & typography remain clear and legible */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "linear-gradient(180deg, var(--color-paper) 0%, rgba(248, 245, 239, 0.82) 15%, rgba(248, 245, 239, 0.72) 50%, rgba(248, 245, 239, 0.85) 85%, var(--color-paper) 100%)",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
+
+      <div className="container" style={{ position: "relative", zIndex: 2 }}>
         <div className="reveal">
           <SectionHeader
             title="Ceremony & Muhurtham"

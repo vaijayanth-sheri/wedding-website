@@ -1,13 +1,15 @@
 import React from "react";
-import { ClosingBlessing } from "../data/wedding";
+import { ClosingBlessing, PhotographyConfig } from "../data/wedding";
 import { IkatDivider, BotanicalPanicle } from "../components/DecorativeMotif";
 import { ChibiBlessings } from "../components/ChibiIllustrations";
+import { PlaceholderPhoto } from "../components/PlaceholderPhoto";
 
 interface ClosingSectionProps {
   closing: ClosingBlessing;
+  photography: PhotographyConfig;
 }
 
-export const ClosingSection: React.FC<ClosingSectionProps> = ({ closing }) => {
+export const ClosingSection: React.FC<ClosingSectionProps> = ({ closing, photography }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -51,6 +53,18 @@ export const ClosingSection: React.FC<ClosingSectionProps> = ({ closing }) => {
           >
             "{closing.eldersBlessing}"
           </p>
+        </div>
+
+        {/* Celebration & Family Blessing Photograph */}
+        <div style={{ margin: "var(--space-6) auto var(--space-8)", maxWidth: "620px" }}>
+          <PlaceholderPhoto
+            aspectRatio="landscape"
+            targetPath={photography.celebrationImage.src}
+            altText={photography.celebrationImage.alt}
+            isAvailable={photography.celebrationImage.isAvailable}
+            caption={photography.celebrationImage.caption}
+            objectPosition="center 25%"
+          />
         </div>
 
         {/* Chibi Couple bowing for blessings */}

@@ -73,17 +73,23 @@ export interface ClosingBlessing {
   signoffTelugu: string;
 }
 
+export interface ImageAsset {
+  src: string;
+  alt: string;
+  isAvailable: boolean;
+  caption?: string;
+}
+
 export interface PhotographyConfig {
-  heroImage: {
-    src: string;
-    alt: string;
-    isAvailable: boolean;
-  };
-  storyImage: {
-    src: string;
-    alt: string;
-    isAvailable: boolean;
-  };
+  heroImage: ImageAsset;
+  couplePortrait: ImageAsset;
+  walkingShot: ImageAsset;
+  ritualImage: ImageAsset;
+  agricultureTheme: ImageAsset;
+  venueImage: ImageAsset;
+  celebrationImage: ImageAsset;
+  // Legacy aliases
+  storyImage: ImageAsset;
 }
 
 export interface WeddingData {
@@ -190,14 +196,53 @@ export const weddingData: WeddingData = {
 
   photography: {
     heroImage: {
-      src: "/images/hero-couple.jpg",
-      alt: "Wedding portrait of the couple",
-      isAvailable: false, // Set to true once approved photograph is placed in public/images/
+      src: "/images/01-hero-main-banner.jpg",
+      alt: "Telugu bride and groom standing together in traditional wedding attire",
+      isAvailable: true,
+      caption: "Auspicious Union · కల్యాణ వైభోగం",
     },
+    couplePortrait: {
+      src: "/images/02-couple-portrait.jpg",
+      alt: "Close-up portrait of the bride and groom sharing a serene moment",
+      isAvailable: true,
+      caption: "A shared journey begins · నూతన దంపతులు",
+    },
+    walkingShot: {
+      src: "/images/03-full-body-walking-shot.jpg",
+      alt: "Full-body portrait of the bride and groom walking together hand in hand",
+      isAvailable: true,
+      caption: "Walking towards a shared future · సప్తపది అడుగులు",
+    },
+    ritualImage: {
+      src: "/images/04-traditional-ritual.jpg",
+      alt: "Traditional Telugu wedding rituals and sacred havan ceremony",
+      isAvailable: true,
+      caption: "Sacred rites & invocations · వివాహ సంప్రదాయాలు",
+    },
+    agricultureTheme: {
+      src: "/images/05-agriculture-theme.jpg",
+      alt: "Couple in lush green agricultural field celebrating Telangana's fertile soil and harvest",
+      isAvailable: true,
+      caption: "Rooted in the fertile soil of Telangana · హరిత సౌభాగ్యం",
+    },
+    venueImage: {
+      src: "/images/06-venue-location.jpg",
+      alt: "The elegantly decorated wedding venue and celebration mandapam",
+      isAvailable: true,
+      caption: "Venue & Celebration Mandapam · వివాహ ప్రాంగణం",
+    },
+    celebrationImage: {
+      src: "/images/07-celebration-family.jpg",
+      alt: "Warm family celebration and blessings with loved ones",
+      isAvailable: true,
+      caption: "Surrounded by family, elders, and cherished friends · ఆశీస్సులతో",
+    },
+    // Backwards-compatible alias for existing references
     storyImage: {
-      src: "/images/couple-story.jpg",
-      alt: "Couple photograph",
-      isAvailable: false,
+      src: "/images/05-agriculture-theme.jpg",
+      alt: "Couple in lush green agricultural field celebrating Telangana's fertile soil and harvest",
+      isAvailable: true,
+      caption: "Rooted in the fertile soil of Telangana · హరిత సౌభాగ్యం",
     },
   },
 };

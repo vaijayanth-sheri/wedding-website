@@ -1,12 +1,14 @@
 import React from "react";
 
 interface PlaceholderPhotoProps {
-  aspectRatio?: "portrait" | "landscape" | "square";
+  aspectRatio?: "portrait" | "landscape" | "square" | "panoramic";
   targetPath: string;
   altText: string;
   isAvailable?: boolean;
   caption?: string;
   className?: string;
+  objectPosition?: string;
+  priority?: boolean;
 }
 
 export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
@@ -16,11 +18,14 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
   isAvailable = false,
   caption,
   className = "",
+  objectPosition = "center",
+  priority = false,
 }) => {
   const ratioStyles: Record<string, React.CSSProperties> = {
     portrait: { aspectRatio: "3 / 4", maxHeight: "540px" },
     landscape: { aspectRatio: "16 / 9", maxHeight: "420px" },
     square: { aspectRatio: "1 / 1", maxHeight: "420px" },
+    panoramic: { aspectRatio: "21 / 9", maxHeight: "440px" },
   };
 
   return (
@@ -29,7 +34,7 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
       style={{
         margin: "0 auto",
         width: "100%",
-        maxWidth: aspectRatio === "portrait" ? "420px" : "680px",
+        maxWidth: aspectRatio === "portrait" ? "440px" : aspectRatio === "panoramic" ? "880px" : "680px",
       }}
     >
       <div
@@ -47,7 +52,7 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "var(--space-6)",
+          padding: isAvailable ? 0 : "var(--space-6)",
           textAlign: "center",
         }}
       >
@@ -59,10 +64,14 @@ export const PlaceholderPhoto: React.FC<PlaceholderPhotoProps> = ({
             src={targetPath}
             alt={altText}
             className="photo-reveal-content"
+            loading={priority ? "eager" : "lazy"}
+            decoding={priority ? "sync" : "async"}
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition,
+              display: "block",
             }}
           />
         ) : (

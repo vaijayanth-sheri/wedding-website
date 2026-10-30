@@ -137,9 +137,13 @@ export const App: React.FC = () => {
         <InvitationSection
           hosts={weddingData.familyHosts}
           couple={weddingData.couple}
+          photography={weddingData.photography}
         />
 
-        <WeddingDetailsSection ceremony={weddingData.mainCeremony} />
+        <WeddingDetailsSection
+          ceremony={weddingData.mainCeremony}
+          photography={weddingData.photography}
+        />
 
         <CeremonyScheduleSection schedule={weddingData.schedule} />
 
@@ -148,11 +152,17 @@ export const App: React.FC = () => {
           photography={weddingData.photography}
         />
 
-        <VenueSection ceremony={weddingData.mainCeremony} />
+        <VenueSection
+          ceremony={weddingData.mainCeremony}
+          photography={weddingData.photography}
+        />
       </main>
 
       {/* Closing Section */}
-      <ClosingSection closing={weddingData.closing} />
+      <ClosingSection
+        closing={weddingData.closing}
+        photography={weddingData.photography}
+      />
     </div>
   );
 };
